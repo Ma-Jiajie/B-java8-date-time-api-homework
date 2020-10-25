@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb;
 
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +36,8 @@ public class MeetingSystemV3 {
     LocalDateTime now = LocalDateTime.now();
     if (now.isAfter(localDateTimeforMeeting)) {
 
-      LocalDateTime tomorrow = now.plusDays(1);
+      Period oneDay = Period.ofDays(1);
+      LocalDateTime tomorrow = now.plus(oneDay);
       int newDayOfYear = tomorrow.getDayOfYear();
 
       localDateTimeforMeeting = localDateTimeforMeeting.withDayOfYear(newDayOfYear);  //本地下次会议时间
